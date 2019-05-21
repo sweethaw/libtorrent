@@ -676,7 +676,7 @@ namespace {
 		TORRENT_ASSERT(t);
 
 		// add handshake to the send buffer
-		static const char version_string[] = "BitTorrent protocol";
+		static const char version_string[] = "1234567890abcdefghi";
 		const int string_len = sizeof(version_string) - 1;
 
 		char handshake[1 + string_len + 8 + 20 + 20];
@@ -2953,7 +2953,7 @@ namespace {
 			recv_buffer = m_recv_buffer.get();
 
 			int const packet_size = recv_buffer[0];
-			static const char protocol_string[] = "\x13" "BitTorrent protocol";
+			static const char protocol_string[] = "\x13" "1234567890abcdefghi";
 
 			if (packet_size != 19 ||
 				recv_buffer.first(20) != span<char const>{protocol_string, 20})
